@@ -1,4 +1,4 @@
-# Credit Card Fraud Detection Example
+# Customer Churn Machine Learning Final Project
 
 This repository is an example template that demonstrates how to structure a machine learning project for reproducibility. It includes a minimal end-to-end workflow for detecting credit card fraud using scikit‑learn.
 

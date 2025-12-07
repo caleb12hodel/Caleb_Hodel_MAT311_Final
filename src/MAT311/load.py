@@ -41,11 +41,13 @@ def load_data(target:str, features:list = None)->list:
     #Separate X and y
     y = churn_train[target].copy()
     X = churn_train.drop(columns=[target])
+
     
     #Subset on features if provided
     if features is not None:
         X = X[features]
         X_submission = churn_test[features].copy()
+    
     
     #Split data
     X_train, X_test, y_train, y_test = train_test_split(
@@ -56,7 +58,47 @@ def load_data(target:str, features:list = None)->list:
     X_train, X_test, X_submission = scale_data(X_train, X_test, X_submission)
 
     return X_train, X_test, y_train, y_test, X_submission
+
+
+# def load_data_for_validated_model(target:str, features:list = None)->list:
+#     churn_train = pd.read_csv("../data/raw/train.csv")
+#     churn_test = pd.read_csv("../data/raw/test.csv")
+#     churn_train = churn_train.set_index("CustomerID", drop = False)
+#     churn_test = churn_test.set_index("CustomerID", drop = False)
+   
+#     if features is None:
+#         features = churn_test.columns
         
+
+#     churn_train, churn_test, features = check_cols(churn_train, churn_test , features)
+
+#     #Clean Data
+#     churn_train = clean_data_impute(churn_train)
+#     churn_test = clean_data_impute(churn_test)
+
+#     #Separate X and y
+#     y = churn_train[target].copy()
+#     X = churn_train.drop(columns=[target])
+
+#     #Subset on features if provided
+#     if features is not None:
+#         X = X[features]
+#         X_submission = churn_test[features].copy()
+
+#     X_train = churn_train[features].copy()
+#     X_submission = churn_test[features].copy()  # Don't include CustomerID
+
+#     X_test = X_train.copy() #Dummy these so the scale data function works
+#     y_test = y.copy()
+#     y_train = y
+
+
+#     #Scale Data
+#     X_train, X_test, X_submission = scale_data(X_train, X_test, X_submission)
+
+#     return X_train, X_test, y_train, y_test, X_submission
+
+
 
 def evaluate_model(y_test, predictions, probabilities=None)->dict:
     scores = {}

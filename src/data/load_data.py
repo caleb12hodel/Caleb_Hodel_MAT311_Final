@@ -1,9 +1,8 @@
 import pandas as pd
 
 
-def load_dataset(file_path: str) -> pd.DataFrame:
-    """Load the credit card transaction dataset."""
-    return pd.read_csv(file_path)
+def load_raw_data() -> pd.DataFrame:
+    return pd.read_csv("data/raw/train.csv")
 
 
 if __name__ == "__main__":
