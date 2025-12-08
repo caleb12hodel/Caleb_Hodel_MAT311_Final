@@ -6,5 +6,5 @@ def load_raw_data() -> pd.DataFrame:
 
 
 if __name__ == "__main__":
-    df = load_dataset("data/raw/card_transdata.csv")
+    df = load_raw_data("data/raw/train.csv")
     print(df.head())

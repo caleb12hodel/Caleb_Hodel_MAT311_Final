@@ -7,6 +7,7 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 from MAT311.clean_data import *
 from MAT311.encode_cat import check_cols
+import os
 
 
 def scale_data(train:pd.DataFrame, test:pd.DataFrame, test_submission:pd.DataFrame)->list:
@@ -26,8 +27,8 @@ def scale_data(train:pd.DataFrame, test:pd.DataFrame, test_submission:pd.DataFra
 
 
 def load_data(target:str, features:list = None)->list:
-    churn_train = pd.read_csv("../data/raw/train.csv")
-    churn_test = pd.read_csv("../data/raw/test.csv")
+    churn_train = pd.read_csv("./data/raw/train.csv") # add back ../ for notebook work and then re build
+    churn_test = pd.read_csv("./data/raw/test.csv")   # add back ../ for notebook work and then re build
     churn_train = churn_train.set_index("CustomerID", drop = False)
     churn_test = churn_test.set_index("CustomerID", drop = False)
 
@@ -37,6 +38,8 @@ def load_data(target:str, features:list = None)->list:
     #Clean Data
     churn_train = clean_data_impute(churn_train)
     churn_test = clean_data_impute(churn_test)
+    churn_train.to_csv(f"./data/processed/processed.csv",index= False)
+
 
     #Separate X and y
     y = churn_train[target].copy()
@@ -53,7 +56,7 @@ def load_data(target:str, features:list = None)->list:
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.3, random_state=42, stratify=y
     )
-
+    
     #Scale Data
     X_train, X_test, X_submission = scale_data(X_train, X_test, X_submission)
 

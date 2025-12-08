@@ -1,10 +1,11 @@
 # Customer Churn Machine Learning Final Project
 
-This repository is an example template that demonstrates how to structure a machine learning project for reproducibility. It includes a minimal end-to-end workflow for detecting credit card fraud using scikit‑learn.
+The MAT311 Final Project repository is my Data Science final project. The repository leverages scikit learn's machine learning classification models in the context of binary prediction. 
 
-## Purpose
 
-The layout of this project mirrors the recommended directory organization shown in the assignment instructions. It can be used as a starting point for your own work or as a reference when showcasing your skills to potential employers. All code is well documented and grouped by task so you can easily build upon it.
+## Purpose and Context
+
+This project aims to predict whether a given customer for a fictitious company will churn or not churn. We have been given a `test.csv` dataset which contains various features that must be experimented with in order to create a machine learning model to predict whether or not a given customer churns. 
 
 ## Project layout
 
@@ -15,34 +16,43 @@ The layout of this project mirrors the recommended directory organization shown 
 ├── data/
 │   ├── processed/          # Created after running the pipeline
 │   └── raw/
-│       └── card_transdata.csv
+│       └── train.csv
+        └── test.csv (Used to generate Kaggle probabilities)
 ├── notebooks/
-│   └── credit_card_fraud_analysis.ipynb
+│   └── dumb_model.ipynb
+    └── eda_test.ipynb
+    └── eda_train.ipynb
+    └── ideas.ipynb
+    └── knn_idea.ipynb
+    └── neural_network.ipynb
+    └── random_forest.ipynb
 └── src/
     ├── data/
-    │   ├── load_data.py
-    │   ├── preprocess.py
-    │   └── split_data.py
+    │   └── load_data.py (just for eda in main)
     ├── features/
     │   └── build_features.py
+    ├── MAT311/
+        └── clean_data.py
+        └──encode_cat.py
+        └──load.py
     ├── models/
-    │   ├── train_model.py
-    │   ├── dumb_model.py
+    │   └── dumb_model.py
     │   └── knn_model.py
+    │   └── random_forest.py
     ├── utils/
     │   └── helper_functions.py
     └── visualization/
-        ├── eda.py
+        └── eda.py
         └── performance.py
 ```
 
-`main.py` imports the modules inside `src/` and executes them to reproduce the analysis and results. Jupyter notebooks are provided only for prototyping and exploration—they are **not** meant to be the main entry point of the project.
+`main.py` imports the modules from `src/` and utilizes `MAT311` for a custom python library, enabeling seamless function integration into both notebooks and `main.py`. Using these modules we are able to executes models in a reproducible way that enables easier analysis. Jupyter notebooks are provided only for prototyping and exploration—they are **not** meant to be the main entry point of the project.
 
 Some directories such as `data/external/`, `src/utils/` and `tests/` may be empty, but the folder structure is provided to illustrate how a complete project should look.
 
-## Running the example
+## Running the project
 
-Install the dependencies and run the pipeline. You should use the versions of the dependencies as specified by the requirements file:
+Install the dependencies and run the pipeline. You should use the versions of the dependencies as specified by the `requirements.txt` file:
 
 ```bash
 conda create -n final_project --file requirements.txt
@@ -50,5 +60,5 @@ conda activate final_project
 python main.py
 ```
 
-This will load the dataset, perform basic feature engineering, train a simple model and produce visualizations similar to those in the notebook.
-The cleaned data will be written to `data/processed/` and all plots will be displayed interactively.
+This will load the dataset, perform basic feature engineering, train 3 models and produce visualizations.
+The cleaned data will be written to `data/processed/` and all plots will be displayed interactively. To create a pdf based report use our functions in a notebook and export to either pdf or html.

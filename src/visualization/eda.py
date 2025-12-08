@@ -248,11 +248,7 @@ def plot_eda(churn_train: pd.DataFrame) -> None:
     plt.tight_layout()
     plt.show()
     
-    print("\nMissing value proportions by Churn status:")
-    for col in missing_cols:
-        print(f"\n{col}:")
-        print(df[[f'{col}_Missing', 'Churn']].value_counts(normalize=True).sort_index())
-
+    
 
 if __name__ == "__main__":
     import pandas as pd
