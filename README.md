@@ -11,15 +11,15 @@ This project aims to predict whether a given customer for a fictitious company w
 
 ```
 .
-├── main.py                 # Entry point that runs the entire pipeline
-├── requirements.txt        # Python dependencies
+├── main.py                 (Entry point that runs the entire pipeline)
+├── requirements.txt        (Python dependencies)
 ├── data/
-│   ├── processed/          # Created after running the pipeline
-│   └── raw/
-│       └── train.csv
-        └── test.csv (Used to generate Kaggle probabilities)
+    ├── processed/          (Created after running the pipeline)
+    └── raw/
+        └── train.csv
+        └── test.csv        (Used to generate Kaggle probabilities)
 ├── notebooks/
-│   └── dumb_model.ipynb
+    └── dumb_model.ipynb
     └── eda_test.ipynb
     └── eda_train.ipynb
     └── ideas.ipynb
@@ -28,25 +28,26 @@ This project aims to predict whether a given customer for a fictitious company w
     └── random_forest.ipynb
 └── src/
     ├── data/
-    │   └── load_data.py (just for eda in main)
+    │   └── load_data.py        (just for eda in main)
     ├── features/
     │   └── build_features.py
     ├── MAT311/
-        └── clean_data.py
-        └──encode_cat.py
-        └──load.py
+        └── clean_data.py       (clean data)
+        └── encode_cat.py       (encode categorical variables)
+        └── load.py             (load data and split data)
     ├── models/
-    │   └── dumb_model.py
-    │   └── knn_model.py
-    │   └── random_forest.py
+        └── dumb_model.py
+        └── knn_model.py
+        └── random_forest.py
     ├── utils/
-    │   └── helper_functions.py
+        └── helper_functions.py
     └── visualization/
         └── eda.py
         └── performance.py
+├── submission                  (contains csv files for kaggle submissions)
 ```
 
-`main.py` imports the modules from `src/` and utilizes `MAT311` for a custom python library, enabeling seamless function integration into both notebooks and `main.py`. Using these modules we are able to executes models in a reproducible way that enables easier analysis. Jupyter notebooks are provided only for prototyping and exploration—they are **not** meant to be the main entry point of the project.
+`main.py` imports the modules from `src/` and utilizes `MAT311` for a custom python library, enabling seamless function integration into both notebooks and `main.py`. Using these modules we are able to executes models in a reproducible way that enables easier analysis. Jupyter notebooks are provided only for prototyping and exploration—they are **not** meant to be the main entry point of the project.
 
 Some directories such as `data/external/`, `src/utils/` and `tests/` may be empty, but the folder structure is provided to illustrate how a complete project should look.
 
